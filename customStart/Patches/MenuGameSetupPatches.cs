@@ -6,12 +6,12 @@ using ProcessorTycoon.Menu;
 namespace customStart.Patches;
 
 [HarmonyPatch(typeof(MenuGameSetup), "UpdateInitialData")]
-class AbstractActor_IsUsingBreachingShotAbility
+class MenuGameSetup_UpdateInitialData
 {
     public static void Postfix(MenuGameSetup __instance)
     {
         var factorySize = CustomStartConfig.FactorySize.Value;
-        var difficultyLevel = CustomStartConfig.DifficultyLevel.Value;
+        var difficultyLevel = CustomStartConfig.Difficulty;
         __instance.playerInitialData.StartingFunds =  CustomStartConfig.StartingFunds.Value;
         __instance.playerInitialData.FactorySize = factorySize;
         __instance.playerInitialData.StartingTechnology = CustomStartConfig.StartingTechnology;
